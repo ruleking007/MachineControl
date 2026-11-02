@@ -1,0 +1,34 @@
+# 机器操控工具箱依赖
+# 安装：python -m pip install -r requirements.txt
+#
+# 版本下限来自 诊断报告.md 的核实结论：
+#   mss>=10.2      —— 10.2 起同一 MSS 实例跨线程 grab 才被官方保证线程安全
+#   pynput>=1.8    —— 1.8 起回调多传一个 injected 参数，代码已按 *args 兼容
+# 回放操作层已重写为纯 ctypes（winctl.py，直调 user32 SendInput），不再需要 pyautogui
+mss>=10.2
+pynput>=1.8
+pystray>=0.19
+opencv-python>=5.0.0.93 ; python_version >= "3.9"
+numpy>=2.0
+pytesseract>=0.3.13
+Pillow>=6.2
+
+# 另需系统级安装 Tesseract-OCR（含 chi_sim 中文语言包）：
+#   https://github.com/UB-Mannheim/tesseract/wiki
+# 程序启动时按 环境变量 TESSERACT_CMD → C:\Program Files\Tesseract-OCR → PATH 顺序自动探测
+
+# ===================== 图形监察（YOLO）独立环境 =====================
+# ultralytics + torch 体积数 GB，且与主程序解释器版本不同，刻意不进上面的依赖：
+# 推理跑在独立 conda 环境的子进程里（见 yolo_monitor.py / yolo_worker.py）。
+#
+# 建环境（已建好则跳过）：
+#   conda create -n yolo_ocr python=3.11 -y
+#   conda activate yolo_ocr
+#   pip install ultralytics pillow
+#
+# 默认探测路径（可用环境变量 YOLO_PYTHON 覆盖，或在界面上直接填）：
+#   C:\Users\21094\.conda\envs\yolo_ocr\python.exe
+#
+# 权重：界面「选择权重…」指定任意 .pt；
+#   留空且本目录没有 yolov8n.pt 时，ultralytics 会尝试联网自动下载 COCO 预训练权重。
+# CPU 推理约 0.7s/帧，因此图形监察默认间隔 2.0s（可调，独立于 OCR 的 0.5s）。

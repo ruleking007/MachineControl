@@ -1,0 +1,8 @@
+{
+  "python_path": "C:\\Users\\21094\\.conda\\envs\\yolo_ocr\\python.exe",
+  "model_path": "C:\\Users\\21094\\Desktop\\信息化\\机器操控\\yolov8n.pt",
+  "conf": 0.3,
+  "interval": 0.5,
+  "enabled": true,
+  "classes": []
+}

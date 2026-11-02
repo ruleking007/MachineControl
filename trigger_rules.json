@@ -1,0 +1,36 @@
+[
+  {
+    "name": "新规则",
+    "keywords": [
+      "金融"
+    ],
+    "cooldown": 1.0,
+    "case_sensitive": false,
+    "exact_match": false,
+    "action": "日志",
+    "alert_file": "",
+    "enabled": true,
+    "source": "文字",
+    "min_conf": 0.35,
+    "min_count": 1,
+    "script_file": "",
+    "script_loop": false
+  },
+  {
+    "name": "新规则",
+    "keywords": [
+      "关键词"
+    ],
+    "cooldown": 5.0,
+    "case_sensitive": false,
+    "exact_match": false,
+    "action": "日志",
+    "alert_file": "",
+    "enabled": true,
+    "source": "文字",
+    "min_conf": 0.35,
+    "min_count": 1,
+    "script_file": "",
+    "script_loop": false
+  }
+]
